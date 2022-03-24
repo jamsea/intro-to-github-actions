@@ -1,0 +1,16 @@
+name: GitHub Actions Build and Deploy Demo
+on:
+  pull_request:
+    branches:
+      - main
+    types: [opened, synchronize, closed]
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Install test and build
+        run: |
+          npm install-ci-test
+          npm run build
